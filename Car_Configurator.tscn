@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Car_Configurator.gd" type="Script" id=1]
+[ext_resource path="res://Extras_CheckBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Extras.gd" type="Script" id=3]
+
+[node name="Car_Configurator" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+
+[node name="Engine" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1010.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Engine"]
+margin_top = 3.0
+margin_right = 93.0
+margin_bottom = 17.0
+text = "Motorleistung:"
+
+[node name="EngineOptions" type="OptionButton" parent="VBoxContainer/Engine"]
+margin_left = 97.0
+margin_right = 126.0
+margin_bottom = 20.0
+
+[node name="Paintjob" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 1010.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Paintjob"]
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 17.0
+text = "Lackierung:"
+
+[node name="PaintjobOptions" type="OptionButton" parent="VBoxContainer/Paintjob"]
+margin_left = 76.0
+margin_right = 105.0
+margin_bottom = 20.0
+
+[node name="Rims" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 1010.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Rims"]
+margin_top = 3.0
+margin_right = 46.0
+margin_bottom = 17.0
+text = "Felgen:"
+
+[node name="RimsOptions" type="OptionButton" parent="VBoxContainer/Rims"]
+margin_left = 50.0
+margin_right = 79.0
+margin_bottom = 20.0
+
+[node name="Extras_Title" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 1010.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Extras_Title"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Extras:"
+
+[node name="Extras" type="GridContainer" parent="VBoxContainer"]
+margin_top = 90.0
+margin_right = 1010.0
+margin_bottom = 90.0
+columns = 3
+script = ExtResource( 3 )
+extra_element_scene = ExtResource( 2 )
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 94.0
+margin_right = 1010.0
+margin_bottom = 108.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_right = 36.0
+margin_bottom = 14.0
+text = "Preis:"
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 40.0
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Currency" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 44.0
+margin_right = 72.0
+margin_bottom = 14.0
+text = "Euro"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 112.0
+margin_right = 1010.0
+margin_bottom = 132.0
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
+margin_right = 55.0
+margin_bottom = 20.0
+text = "Kaufen"
+
+[connection signal="item_selected" from="VBoxContainer/Engine/EngineOptions" to="." method="_on_EngineOptions_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/Paintjob/PaintjobOptions" to="." method="_on_PaintjobOptions_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/Rims/RimsOptions" to="." method="_on_RimsOptions_item_selected"]

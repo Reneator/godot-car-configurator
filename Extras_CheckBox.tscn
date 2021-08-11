@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Extras_CheckBox.gd" type="Script" id=1]
+
+[node name="CheckBox" type="CheckBox"]
+margin_right = 154.0
+margin_bottom = 24.0
+text = "Xenon Scheinwerfer"
+script = ExtResource( 1 )

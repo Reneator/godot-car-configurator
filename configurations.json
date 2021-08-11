@@ -1,0 +1,82 @@
+[
+	{
+		"name": "Car A",
+		"basePrice": 20000,
+		"rims": [
+			{
+				"name": "Standard",
+				"price": 0
+			},
+			{
+				"name": "Glitzer",
+				"price": 250
+			},
+			{
+				"name": "Klein",
+				"price": 150
+			},
+			{
+				"name": "Matt",
+				"price": 200
+			}
+		],
+		"engine": [
+			{
+				"name": "100",
+				"price": 0
+			},
+			{
+				"name": "200",
+				"price": 1500
+			},
+			{
+				"name": "300",
+				"price": 4000
+			},
+			{
+				"name": "500",
+				"price": 10000
+			}
+		],
+		"paintjob": [
+			{
+				"name": "grün",
+				"price": 0
+			},
+			{
+				"name": "blau",
+				"price": 150
+			},
+			{
+				"name": "metallic rot",
+				"price": 300
+			},
+			{
+				"name": "Lila",
+				"price": 200
+			}
+		],
+		"extras": [
+			{
+				"name": "Klimaanlage",
+				"price": 400
+			},
+			{
+				"name": "Xenon Scheinwerfer",
+				"price": 800
+			},
+			{
+				"name": "Subwoofer",
+				"price": 250
+			},
+			{
+				"name": "Autonomes Fahren",
+				"price": 1500
+			},
+			{
+				"name": "Schleudersitz",
+				"price": 2500
+			}
+		]
+	}
+]
