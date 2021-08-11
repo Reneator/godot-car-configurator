@@ -9,4 +9,4 @@ func _init(option):
 	price = option.get("price")
 
 func get_option_string():
-	return "%s +(%d Euro)" % [option_name,price]
+	return "%s (+%d Euro)" % [option_name,price]
