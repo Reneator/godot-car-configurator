@@ -17,11 +17,13 @@ func _ready():
 	var json = json_parseresult.result
 	var car_json = json[0]
 	configuration = Car_Configuration.new(car_json)
+	
 	extras.connect("changed", self, "on_extras_changed")
 	initialize()
 	refresh_total_price()
 	
 func initialize():
+	$VBoxContainer/Car_Model2/Car_Model_Label.text = configuration.car_name
 	for option in configuration.engines:
 		engine_options.add_item(option.get_option_string())
 	for option in configuration.paintjobs:
