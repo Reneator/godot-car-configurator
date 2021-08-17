@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Car_Configurator.gd" type="Script" id=1]
 [ext_resource path="res://Extras_CheckBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Extras.gd" type="Script" id=3]
+[ext_resource path="res://Summary.tscn" type="PackedScene" id=4]
 
 [node name="Car_Configurator" type="PanelContainer"]
 anchor_right = 1.0
@@ -11,6 +12,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+summary_scene = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
@@ -37,10 +39,33 @@ margin_top = 18.0
 margin_right = 1010.0
 margin_bottom = 22.0
 
-[node name="Engine" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Base_Price" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 26.0
 margin_right = 1010.0
-margin_bottom = 46.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Base_Price"]
+margin_right = 123.0
+margin_bottom = 14.0
+text = "Modell Grundpreis:"
+
+[node name="Price" type="Label" parent="VBoxContainer/Base_Price"]
+margin_left = 127.0
+margin_right = 1010.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "300 Euro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Engine" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 1010.0
+margin_bottom = 64.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Engine"]
 margin_top = 3.0
@@ -54,9 +79,9 @@ margin_right = 126.0
 margin_bottom = 20.0
 
 [node name="Paintjob" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 50.0
+margin_top = 68.0
 margin_right = 1010.0
-margin_bottom = 70.0
+margin_bottom = 88.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Paintjob"]
 margin_top = 3.0
@@ -70,9 +95,9 @@ margin_right = 105.0
 margin_bottom = 20.0
 
 [node name="Rims" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 74.0
+margin_top = 92.0
 margin_right = 1010.0
-margin_bottom = 94.0
+margin_bottom = 112.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Rims"]
 margin_top = 3.0
@@ -86,9 +111,9 @@ margin_right = 79.0
 margin_bottom = 20.0
 
 [node name="Extras_Title" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 98.0
+margin_top = 116.0
 margin_right = 1010.0
-margin_bottom = 112.0
+margin_bottom = 130.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Extras_Title"]
 margin_right = 42.0
@@ -96,17 +121,17 @@ margin_bottom = 14.0
 text = "Extras:"
 
 [node name="Extras" type="GridContainer" parent="VBoxContainer"]
-margin_top = 116.0
+margin_top = 134.0
 margin_right = 1010.0
-margin_bottom = 116.0
+margin_bottom = 134.0
 columns = 3
 script = ExtResource( 3 )
 extra_element_scene = ExtResource( 2 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 120.0
+margin_top = 138.0
 margin_right = 1010.0
-margin_bottom = 134.0
+margin_bottom = 152.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
 margin_right = 36.0
@@ -125,11 +150,11 @@ margin_bottom = 14.0
 text = "Euro"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 138.0
+margin_top = 156.0
 margin_right = 1010.0
-margin_bottom = 158.0
+margin_bottom = 176.0
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
+[node name="Buy_Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
 margin_right = 55.0
 margin_bottom = 20.0
 text = "Kaufen"
@@ -137,3 +162,4 @@ text = "Kaufen"
 [connection signal="item_selected" from="VBoxContainer/Engine/EngineOptions" to="." method="_on_EngineOptions_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/Paintjob/PaintjobOptions" to="." method="_on_PaintjobOptions_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/Rims/RimsOptions" to="." method="_on_RimsOptions_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Buy_Button" to="." method="_on_Buy_Button_pressed"]

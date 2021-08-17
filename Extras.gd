@@ -23,3 +23,10 @@ func get_total_price():
 			continue
 		total += child.get_price()
 	return total
+
+func get_selected_extras():
+	var extras = []
+	for child in get_children():
+		if child.pressed:
+			extras.append(child.option)
+	return extras

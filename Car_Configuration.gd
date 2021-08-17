@@ -8,8 +8,9 @@ var engines = []
 var paintjobs = []
 var extras = []
 
+var cached_total
 
-func _init(car_json):
+func from_json(car_json):
 	car_name = car_json.get("name")
 	base_price = car_json.get("basePrice")
 	var _rims = car_json.get("rims")
@@ -27,4 +28,3 @@ func _init(car_json):
 	var _extras = car_json.get("extras")
 	for extra in _extras:
 		extras.append(Car_Option.new(extra))
-
