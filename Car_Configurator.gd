@@ -1,7 +1,8 @@
 extends PanelContainer
 
-
-var configuration : Car_Configuration
+export (PackedScene) var summary_scene
+var summary
+var configuration : Car_Configuration setget set_configuration
 
 onready var paintjob_options = $VBoxContainer/Paintjob/PaintjobOptions
 onready var engine_options = $VBoxContainer/Engine/EngineOptions
@@ -9,20 +10,25 @@ onready var rim_options = $VBoxContainer/Rims/RimsOptions
 onready var extras = $VBoxContainer/Extras
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var json_file = File.new()
-	json_file.open("res://configurations.json",File.READ)
-	var json_string = json_file.get_as_text()
-	var json_parseresult : JSONParseResult = JSON.parse(json_string)
-	var json = json_parseresult.result
-	var car_json = json[0]
-	configuration = Car_Configuration.new()
-	configuration.from_json(car_json)
-	
+func _ready():	
 	extras.connect("changed", self, "on_extras_changed")
+#	initialize()
+#	refresh_total_price()
+
+func set_configuration(_config):
+	configuration = _config
+	clear()
 	initialize()
-	refresh_total_price()
-	
+
+func clear():
+	engine_options.clear()
+	paintjob_options.clear()
+	rim_options.clear()
+	extras.clear()
+	if summary:
+		summary.queue_free()
+		summary = null
+
 func initialize():
 	$VBoxContainer/Car_Model2/Car_Model_Label.text = configuration.car_name
 	$VBoxContainer/Base_Price/Price.text = "%d Euro" % configuration.base_price
@@ -35,6 +41,9 @@ func initialize():
 	
 	for option in configuration.extras:
 		extras.add_extra(option)
+	
+	refresh_total_price()
+	
 	
 func refresh_total_price():
 	$VBoxContainer/HBoxContainer5/PriceLabel.text = "%d" % get_total_price_for_selections()
@@ -70,8 +79,7 @@ func _on_PaintjobOptions_item_selected(index):
 func _on_RimsOptions_item_selected(index):
 	refresh_total_price()
 
-export (PackedScene) var summary_scene
-var summary
+
 
 func _on_Buy_Button_pressed():
 	if summary:

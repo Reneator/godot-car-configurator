@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Car Configurator"
-run/main_scene="res://Car_Configurator.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [physics]

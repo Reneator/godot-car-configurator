@@ -13,6 +13,10 @@ func add_extra(option : Car_Option):
 
 func on_checkbox_pressed():
 	emit_signal("changed")
+
+func clear():
+	for child in get_children():
+		child.queue_free()
 	
 
 
